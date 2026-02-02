@@ -1,64 +1,83 @@
 using UnityEngine;
 using Runtime.Core;
 
+/// <summary>
+/// Oyuncunun bakış yönünde etkileşimli nesneleri tespit eder ve E tuşu ile etkileşimi tetikler.
+/// </summary>
 public class InteractionDetector : MonoBehaviour
 {
+    #region Fields
+
     private const float k_InteractionRange = 2f;
-    [SerializeField] private float m_interactionRange = k_InteractionRange;
     private const float k_OutOfRangeDistance = 5f;
-    [SerializeField] private float m_outOfRangeDistance = k_OutOfRangeDistance;
-    private Camera m_mainCamera;
-    private IInteractable m_currentInteractable;
-    private bool m_isInteracting = false;
+
+    [SerializeField] private float m_InteractionRange = k_InteractionRange;
+    [SerializeField] private float m_OutOfRangeDistance = k_OutOfRangeDistance;
+
+    private Camera m_MainCamera;
+    private IInteractable m_CurrentInteractable;
+    private bool m_IsInteracting;
+
+    #endregion
+
+    #region Unity Methods
+
     private void Awake()
     {
-        m_mainCamera = Camera.main;
+        m_MainCamera = Camera.main;
     }
+
     private void Update()
     {
-       
         RayCastInteraction(Input.GetKeyDown(KeyCode.E));
-        
-        if (Input.GetKeyUp(KeyCode.E) && m_currentInteractable != null)
+
+        if (Input.GetKeyUp(KeyCode.E) && m_CurrentInteractable != null)
         {
-            m_currentInteractable.CancelInteract();
-            m_currentInteractable = null;
+            m_CurrentInteractable.CancelInteract();
+            m_CurrentInteractable = null;
         }
     }
+
+    #endregion
+
+    #region Methods
+
     private void RayCastInteraction(bool isEPressed)
     {
-        var ray = m_mainCamera.ScreenPointToRay(Input.mousePosition);
-        if (Physics.Raycast(ray, out RaycastHit hit, m_outOfRangeDistance))
+        Ray ray = m_MainCamera.ScreenPointToRay(Input.mousePosition);
+
+        if (Physics.Raycast(ray, out RaycastHit hit, m_OutOfRangeDistance))
         {
             var interactable = hit.collider.GetComponent<IInteractable>();
             if (interactable != null)
             {
-                var distance = Vector3.Distance(m_mainCamera.transform.position, hit.point);
-                m_currentInteractable = interactable;
+                float distance = Vector3.Distance(m_MainCamera.transform.position, hit.point);
+                m_CurrentInteractable = interactable;
+
                 if (isEPressed)
                 {
-                    if (distance <= m_interactionRange)
+                    if (distance <= m_InteractionRange)
                     {
-                        m_currentInteractable.Interact();
+                        m_CurrentInteractable.Interact();
                         InteractionPrompt.Instance.HideInteractionPrompt();
                     }
-                   
                 }
-                else if (distance > m_interactionRange && distance <= m_outOfRangeDistance)
+                else if (distance > m_InteractionRange && distance <= m_OutOfRangeDistance)
                 {
-                    InteractionPrompt.Instance.ShowOutOfRangeInteractionPrompt(m_currentInteractable);
+                    InteractionPrompt.Instance.ShowOutOfRangeInteractionPrompt(m_CurrentInteractable);
                 }
                 else
                 {
-                    InteractionPrompt.Instance.ShowInteractionPrompt(m_currentInteractable);
+                    InteractionPrompt.Instance.ShowInteractionPrompt(m_CurrentInteractable);
                 }
-
             }
         }
-        else if (m_currentInteractable != null)
+        else if (m_CurrentInteractable != null)
         {
-            m_currentInteractable = null;
+            m_CurrentInteractable = null;
             InteractionPrompt.Instance.HideInteractionPrompt();
         }
     }
+
+    #endregion
 }

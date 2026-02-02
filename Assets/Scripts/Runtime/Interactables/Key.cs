@@ -1,35 +1,74 @@
 using UnityEngine;
 using Runtime.Core;
-using UnityEngine.Timeline;
 
+/// <summary>
+/// Toplanabilir anahtar. Envantere eklenir ve uyumlu kapıyı açar.
+/// </summary>
 public class Key : MonoBehaviour, IInteractable
 {
-    [SerializeField] private KeyType m_keyType;
-    public KeyType KeyType
-    {
-        get { return m_keyType; }
-    }
+    #region Fields
+
+    [SerializeField] private KeyType m_KeyType;
+
+    #endregion
+
+    #region Properties
+
+    /// <summary>
+    /// Bu anahtarın tipi (kapı eşleşmesi için).
+    /// </summary>
+    public KeyType KeyType => m_KeyType;
+
+    #endregion
+
+    #region Unity Methods
+
     private void Start()
     {
-        var material = new Material(gameObject.GetComponent<MeshRenderer>().material);
-        material.color = m_keyType.keyColor;
-        gameObject.GetComponent<MeshRenderer>().material = material;
+        MeshRenderer meshRenderer = GetComponent<MeshRenderer>();
+        if (meshRenderer != null && m_KeyType != null)
+        {
+            Material material = new Material(meshRenderer.material);
+            material.color = m_KeyType.keyColor;
+            meshRenderer.material = material;
+        }
     }
+
+    #endregion
+
+    #region Interface Implementations
+
+    /// <inheritdoc />
     public void Interact()
     {
-        Inventory.Instance.AddItem(this);
+        if (Inventory.Instance != null)
+        {
+            Inventory.Instance.AddItem(this);
+        }
         gameObject.SetActive(false);
     }
+
+    /// <inheritdoc />
+    public void CancelInteract()
+    {
+    }
+
+    /// <inheritdoc />
     public string ShowInteractionPrompt()
     {
         return "Press E to pick up the key";
     }
-    public void HideInteractionPrompt()
-    {
-        return ;
-    }
+
+    /// <inheritdoc />
     public string OutOfRangeInteractionPrompt()
     {
         return "You are too far away to interact with the key";
     }
+
+    /// <inheritdoc />
+    public void HideInteractionPrompt()
+    {
+    }
+
+    #endregion
 }

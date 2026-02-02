@@ -163,8 +163,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aabae4c64fe0c684dbf4984e91c9bf63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Switch
-  m_objectToToggle: {fileID: 8887337897936921261}
-  m_doorToUnlock: {fileID: 0}
+  m_ObjectToToggle: {fileID: 8887337897936921261}
+  m_DoorToUnlock: {fileID: 0}
 --- !u!95 &8887337897936921261
 Animator:
   serializedVersion: 7

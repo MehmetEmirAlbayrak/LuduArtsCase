@@ -114,9 +114,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f861ecf53ef2ee4c988b069276cf607, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Door
-  m_isLocked: 1
-  m_requiredKeyType: {fileID: 11400000, guid: f093fda531ef99947b572752609bf3e9, type: 2}
-  m_doorAnimator: {fileID: 1582255985979021408}
+  m_IsLocked: 1
+  m_RequiredKeyType: {fileID: 0}
+  m_DoorAnimator: {fileID: 1582255985979021408}
 --- !u!95 &1582255985979021408
 Animator:
   serializedVersion: 7

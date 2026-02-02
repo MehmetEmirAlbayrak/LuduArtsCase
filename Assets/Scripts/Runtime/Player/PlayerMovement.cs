@@ -1,34 +1,48 @@
 using UnityEngine;
 
+/// <summary>
+/// Oyuncu hareketi ve fare ile bakış (yaw/pitch) kontrolünü yönetir.
+/// </summary>
 public class PlayerMovement : MonoBehaviour
 {
+    #region Fields
+
     private const float k_MovementSpeed = 5f;
-    [SerializeField] private float m_MovementSpeed = k_MovementSpeed;
     private const float k_MouseSensitivity = 2f;
-    [SerializeField] private float m_MouseSensitivity = k_MouseSensitivity;
     private const float k_PitchMin = -80f;
-    [SerializeField] private float m_PitchMin = k_PitchMin;
     private const float k_PitchMax = 80f;
-    [SerializeField] private float m_PitchMax = k_PitchMax;
     private const float k_YawMin = -45f;
-    [SerializeField] private float m_YawMin = k_YawMin;
     private const float k_YawMax = 45f;
+
+    [SerializeField] private float m_MovementSpeed = k_MovementSpeed;
+    [SerializeField] private float m_MouseSensitivity = k_MouseSensitivity;
+    [SerializeField] private float m_PitchMin = k_PitchMin;
+    [SerializeField] private float m_PitchMax = k_PitchMax;
+    [SerializeField] private float m_YawMin = k_YawMin;
     [SerializeField] private float m_YawMax = k_YawMax;
-    
+
     private Rigidbody m_Rigidbody;
+    private float m_Yaw;
+    private float m_Pitch;
+
+    #endregion
+
+    #region Unity Methods
+
     private void Awake()
     {
         m_Rigidbody = GetComponent<Rigidbody>();
     }
-
-    private float m_Yaw;
-    private float m_Pitch;
 
     private void Update()
     {
         Move();
         Rotate();
     }
+
+    #endregion
+
+    #region Methods
 
     private void Move()
     {
@@ -50,4 +64,6 @@ public class PlayerMovement : MonoBehaviour
 
         transform.rotation = Quaternion.Euler(m_Pitch, m_Yaw, 0f);
     }
+
+    #endregion
 }

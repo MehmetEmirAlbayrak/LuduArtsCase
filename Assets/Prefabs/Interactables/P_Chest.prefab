@@ -146,7 +146,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a062adeafdbec5943954928e930e89b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Chest
-  m_chestAnimator: {fileID: 5885468806753253777}
+  m_InteractTime: 2
+  m_ChestAnimator: {fileID: 5885468806753253777}
 --- !u!95 &5885468806753253777
 Animator:
   serializedVersion: 7

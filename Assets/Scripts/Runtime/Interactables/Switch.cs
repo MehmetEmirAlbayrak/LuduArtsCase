@@ -1,36 +1,64 @@
 using UnityEngine;
 using Runtime.Core;
 
+/// <summary>
+/// Aç/kapa (toggle) etkileşimli kol. Animasyon ve isteğe bağlı kapı kilidini açar.
+/// </summary>
 public class Switch : MonoBehaviour, IInteractable
 {
-    private bool m_isOn = false;
-    [SerializeField] private Animator m_objectToToggle;
-    [SerializeField] private Door m_doorToUnlock;
+    #region Fields
 
+    [SerializeField] private Animator m_ObjectToToggle;
+    [SerializeField] private Door m_DoorToUnlock;
 
+    private bool m_IsOn;
 
+    #endregion
+
+    #region Unity Methods
+
+    // (Boş – gerekirse Awake/Start eklenebilir)
+
+    #endregion
+
+    #region Interface Implementations
+
+    /// <inheritdoc />
     public void Interact()
     {
-        Debug.Log("Switch interacted");
-        m_isOn = !m_isOn;
-        m_objectToToggle.SetBool("isOn", m_isOn);
-        if (m_doorToUnlock != null)
+        m_IsOn = !m_IsOn;
+        if (m_ObjectToToggle != null)
         {
-            m_doorToUnlock.Unlock();
-            m_doorToUnlock.Interact();
+            m_ObjectToToggle.SetBool("isOn", m_IsOn);
+        }
+        if (m_DoorToUnlock != null)
+        {
+            m_DoorToUnlock.Unlock();
+            m_DoorToUnlock.Interact();
         }
     }
+
+    /// <inheritdoc />
+    public void CancelInteract()
+    {
+    }
+
+    /// <inheritdoc />
     public string ShowInteractionPrompt()
     {
         return "Press E to toggle the switch";
     }
-    public void HideInteractionPrompt()
-    {
-        return ;
-    }
 
+    /// <inheritdoc />
     public string OutOfRangeInteractionPrompt()
     {
         return "You are too far away to interact with the switch";
     }
+
+    /// <inheritdoc />
+    public void HideInteractionPrompt()
+    {
+    }
+
+    #endregion
 }

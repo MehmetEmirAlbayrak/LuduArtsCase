@@ -1,52 +1,91 @@
 using UnityEngine;
 using Runtime.Core;
 using System.Linq;
-using Unity.VisualScripting;
-using System;
 
+/// <summary>
+/// Açılıp kapanabilen, anahtar ile kilitlenebilen kapı.
+/// </summary>
 public class Door : MonoBehaviour, IInteractable
 {
+    #region Fields
 
-    [SerializeField] private bool m_isLocked = true;
-    [SerializeField] private KeyType m_requiredKeyType;
-    [SerializeField] private Animator m_doorAnimator;
+    [SerializeField] private bool m_IsLocked = true;
+    [SerializeField] private KeyType m_RequiredKeyType;
+    [SerializeField] private Animator m_DoorAnimator;
+
+    #endregion
+
+    #region Unity Methods
+
     private void Awake()
     {
-        var material = new Material(gameObject.GetComponentInChildren<SkinnedMeshRenderer>().material);
-        material.color = m_requiredKeyType.keyColor;
-        gameObject.GetComponentInChildren<SkinnedMeshRenderer>().material = material;
+        SkinnedMeshRenderer renderer = GetComponentInChildren<SkinnedMeshRenderer>();
+        if (renderer != null && m_RequiredKeyType != null)
+        {
+            Material material = new Material(renderer.material);
+            material.color = m_RequiredKeyType.keyColor;
+            renderer.material = material;
+        }
     }
 
+    #endregion
+
+    #region Methods
+
+    /// <summary>
+    /// Kapıyı kilitsiz hale getirir ve açık animasyonunu tetikler.
+    /// </summary>
+    public void Unlock()
+    {
+        m_IsLocked = false;
+        if (m_DoorAnimator != null)
+        {
+            m_DoorAnimator.SetBool("isOpen", true);
+        }
+    }
+
+    #endregion
+
+    #region Interface Implementations
+
+    /// <inheritdoc />
     public void Interact()
     {
-        if (m_isLocked)
+        if (m_IsLocked)
         {
-            if (Inventory.Instance.items.Any(item => (item as Key).KeyType == m_requiredKeyType))
+            if (Inventory.Instance != null &&
+                Inventory.Instance.Items.Any(item => item is Key key && key.KeyType == m_RequiredKeyType))
             {
                 Unlock();
-            } 
+            }
         }
         else
         {
             Unlock();
         }
     }
-    
-    public void Unlock()
+
+    /// <inheritdoc />
+    public void CancelInteract()
     {
-        m_isLocked = false;
-        m_doorAnimator.SetBool("isOpen", true);
     }
+
+    /// <inheritdoc />
     public string ShowInteractionPrompt()
     {
         return "Press E to open the door";
     }
-    public void HideInteractionPrompt()
-    {
-        return ;
-    }
+
+    /// <inheritdoc />
     public string OutOfRangeInteractionPrompt()
     {
         return "You are too far away to interact with the door";
     }
+
+    /// <inheritdoc />
+    public void HideInteractionPrompt()
+    {
+    }
+
+    #endregion
 }

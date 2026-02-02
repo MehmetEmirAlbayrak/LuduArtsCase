@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Key_Cheat
   m_EditorClassIdentifier: Assembly-CSharp::KeyType
   displayName: Anahtar
-  keyColor: {r: 1, g: 1, b: 1, a: 1}
+  keyColor: {r: 0.2924528, g: 0.2080574, b: 0.122774996, a: 1}
