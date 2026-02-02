@@ -1,0 +1,74 @@
+########################
+# Unity .gitignore
+########################
+
+# Unity generated folders
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+[Ll]ogs/
+[Uu]ser[Ss]ettings/
+[Mm]emoryCaptures/
+[Rr]ecordings/
+
+# Asset meta data should be tracked
+!/[Aa]ssets/**/*.meta
+
+# But ignore meta files for files you don't track
+[Aa]ssets/**/*.pidb.meta
+
+# Crash and error reports
+sysinfo.txt
+*.stacktrace
+
+# Cache
+[Aa]sset[Ss]tore/
+[Aa]ssets/AssetStoreTools*
+
+# Generated project files
+*.csproj
+*.unityproj
+*.sln
+*.suo
+*.tmp
+*.user
+*.userprefs
+*.pidb
+*.booproj
+*.svd
+*.pdb
+*.mdb
+*.opendb
+*.VC.db
+
+# Rider
+.idea/
+*.sln.iml
+
+# VS Code
+.vscode/
+
+# Logs
+*.log
+
+# Builds
+*.apk
+*.aab
+*.unitypackage
+
+# OS-specific
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Environment / secrets (if any tooling uses them)
+.env
+.env.*
+.env.local
+.env.*.local
+
+# Other temporary/backup files
+*.bak
+*.tmp
