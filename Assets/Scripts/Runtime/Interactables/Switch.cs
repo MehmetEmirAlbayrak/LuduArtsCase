@@ -23,4 +23,17 @@ public class Switch : MonoBehaviour, IInteractable
     public void CancelInteract()
     {
     }
+    public string ShowInteractionPrompt()
+    {
+        return "Press E to toggle the switch";
+    }
+    public void HideInteractionPrompt()
+    {
+        return ;
+    }
+
+    public string OutOfRangeInteractionPrompt()
+    {
+        return "You are too far away to interact with the switch";
+    }
 }

@@ -42,4 +42,16 @@ public class Door : MonoBehaviour, IInteractable
         Debug.Log("Door is unlocked");
         m_doorAnimator.SetBool("isOpen", true);
     }
+    public string ShowInteractionPrompt()
+    {
+        return "Press E to open the door";
+    }
+    public void HideInteractionPrompt()
+    {
+        return ;
+    }
+    public string OutOfRangeInteractionPrompt()
+    {
+        return "You are too far away to interact with the door";
+    }
 }

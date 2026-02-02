@@ -4,5 +4,9 @@ namespace Runtime.Core
     {
         void Interact();
         void CancelInteract();
+
+        string ShowInteractionPrompt();
+        string OutOfRangeInteractionPrompt();
+        void HideInteractionPrompt();
     }
 }

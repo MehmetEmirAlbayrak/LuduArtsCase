@@ -28,9 +28,23 @@ public class Chest : MonoBehaviour, IInteractable
             if (interactTimer >= k_InteractTime)
             {
                 isInteracting = false;
-                Debug.Log("Chest interacted");
+                
                 m_chestAnimator.SetBool("isOpen", true);
             }
         }
+    }
+
+    public string ShowInteractionPrompt()
+    {
+        return "Press E to open the chest";
+    }
+    public void HideInteractionPrompt()
+    {
+        return ;
+    }
+
+    public string OutOfRangeInteractionPrompt()
+    {
+        return "You are too far away to interact with the chest";
     }
 }

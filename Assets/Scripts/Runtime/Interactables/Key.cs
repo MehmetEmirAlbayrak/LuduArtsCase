@@ -17,4 +17,16 @@ public class Key : MonoBehaviour, IInteractable
     public void CancelInteract()
     {
     }
+    public string ShowInteractionPrompt()
+    {
+        return "Press E to pick up the key";
+    }
+    public void HideInteractionPrompt()
+    {
+        return ;
+    }
+    public string OutOfRangeInteractionPrompt()
+    {
+        return "You are too far away to interact with the key";
+    }
 }
