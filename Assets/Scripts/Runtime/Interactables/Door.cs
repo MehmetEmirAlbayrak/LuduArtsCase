@@ -10,6 +10,12 @@ public class Door : MonoBehaviour, IInteractable
     [SerializeField] private bool m_isLocked = true;
     [SerializeField] private KeyType m_requiredKeyType;
     [SerializeField] private Animator m_doorAnimator;
+    private void Awake()
+    {
+        var material = new Material(gameObject.GetComponentInChildren<SkinnedMeshRenderer>().material);
+        material.color = m_requiredKeyType.keyColor;
+        gameObject.GetComponentInChildren<SkinnedMeshRenderer>().material = material;
+    }
 
     public void Interact()
     {
@@ -18,8 +24,7 @@ public class Door : MonoBehaviour, IInteractable
             if (Inventory.Instance.items.Any(item => (item as Key).KeyType == m_requiredKeyType))
             {
                 Unlock();
-            }
-            
+            } 
         }
         else
         {
