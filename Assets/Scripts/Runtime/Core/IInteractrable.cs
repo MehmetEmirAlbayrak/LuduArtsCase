@@ -3,8 +3,7 @@ namespace Runtime.Core
     public interface IInteractable
     {
         void Interact();
-        void CancelInteract();
-
+        void CancelInteract() { }
         string ShowInteractionPrompt();
         string OutOfRangeInteractionPrompt();
         void HideInteractionPrompt();

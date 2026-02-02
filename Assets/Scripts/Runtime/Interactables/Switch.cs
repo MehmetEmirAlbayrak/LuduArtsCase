@@ -20,9 +20,6 @@ public class Switch : MonoBehaviour, IInteractable
             m_doorToUnlock.Interact();
         }
     }
-    public void CancelInteract()
-    {
-    }
     public string ShowInteractionPrompt()
     {
         return "Press E to toggle the switch";

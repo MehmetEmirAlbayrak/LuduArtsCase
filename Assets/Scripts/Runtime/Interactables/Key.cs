@@ -1,5 +1,6 @@
 using UnityEngine;
 using Runtime.Core;
+using UnityEngine.Timeline;
 
 public class Key : MonoBehaviour, IInteractable
 {
@@ -8,14 +9,16 @@ public class Key : MonoBehaviour, IInteractable
     {
         get { return m_keyType; }
     }
+    private void Start()
+    {
+        var material = new Material(gameObject.GetComponent<MeshRenderer>().material);
+        material.color = m_keyType.keyColor;
+        gameObject.GetComponent<MeshRenderer>().material = material;
+    }
     public void Interact()
     {
-        Debug.Log("Key interacted");
         Inventory.Instance.AddItem(this);
         gameObject.SetActive(false);
-    }
-    public void CancelInteract()
-    {
     }
     public string ShowInteractionPrompt()
     {
