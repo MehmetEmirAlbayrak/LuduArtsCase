@@ -9,7 +9,7 @@ public class Switch : MonoBehaviour, IInteractable
     #region Fields
 
     [SerializeField] private Animator m_ObjectToToggle;
-    [SerializeField] private Door m_DoorToUnlock;
+    [SerializeField] private Door m_DoorToToggle;
 
     private bool m_IsOn;
 
@@ -31,10 +31,19 @@ public class Switch : MonoBehaviour, IInteractable
         {
             m_ObjectToToggle.SetBool("isOn", m_IsOn);
         }
-        if (m_DoorToUnlock != null)
+        if (m_IsOn)
         {
-            m_DoorToUnlock.Unlock();
-            m_DoorToUnlock.Interact();
+            if (m_DoorToToggle != null)
+            {
+                m_DoorToToggle.Unlock();
+            }
+        }
+        else
+        {
+            if (m_DoorToToggle != null)
+            {
+                m_DoorToToggle.Lock();
+            }
         }
     }
 

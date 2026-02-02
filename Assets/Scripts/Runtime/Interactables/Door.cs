@@ -37,10 +37,16 @@ public class Door : MonoBehaviour, IInteractable
     /// </summary>
     public void Unlock()
     {
-        m_IsLocked = false;
         if (m_DoorAnimator != null)
         {
             m_DoorAnimator.SetBool("isOpen", true);
+        }
+    }
+    public void Lock()
+    {
+        if (m_DoorAnimator != null)
+        {
+            m_DoorAnimator.SetBool("isOpen", false);
         }
     }
 
