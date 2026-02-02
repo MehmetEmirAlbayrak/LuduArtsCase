@@ -135,7 +135,7 @@ IInteractableda olan fonksiyonlar 4 ayrı interactables a dağılıyor ve hepsi 
 - [x] / [ ] Interaction Types
   - [x] / [ ] Instant
   - [x] / [ ] Hold
-  - [] / [x] Toggle
+  - [x] / [] Toggle
 
 - [x] / [ ] Interactable Objects
   - [x] / [ ] Door (locked/unlocked)
@@ -168,30 +168,19 @@ IInteractableda olan fonksiyonlar 4 ayrı interactables a dağılıyor ve hepsi 
 
 ### Tamamlanamayan Özellikler
 1. [Hold Progress Bar] - [Diğer şeylerle fazla oyalandığım için bakamadım]
-2. [Özellik] - [Neden]
+2. [Simple Inventory %50] - [Diğer şeylerle fazla oyalandığım için bakamadım]
+3. [UI listesi] - [Diğer şeylerle fazla oyalandığım için bakamadım]
 
 ### Bilinen Bug'lar
-1. [Bug açıklaması] - [Reproduce adımları]
-2. [Bug]
+1. [Kapı açılınca collider yer değişmediği için kapının üstünden atlamak gerekiyor ] - [Açık kapıdan yürü]
 
 ### İyileştirme Önerileri
-1. [Öneri] - [Nasıl daha iyi olabilirdi]
-2. [Öneri]
+1. [Zaman kaybetmek] - [Yetiştiremediğim her şeyi ekleyebilirdim biraz daha zamanım olsaydı daha güzel leveller daha iyi mekanikler ekleyebilirdim]
+2. [Bazı mimarileri daha temiz yazabilirdim]
 
 ---
 
-## Ekstra Özellikler
 
-Zorunlu gereksinimlerin dışında eklediklerim:
-
-1. **[Özellik Adı]**
-   - Açıklama: [Ne yapıyor]
-   - Neden ekledim: [Motivasyon]
-
-2. **[Özellik Adı]**
-   - ...
-
----
 
 ## Dosya Yapısı
 
@@ -231,10 +220,10 @@ Assets/
 
 | Bilgi | Değer |
 |-------|-------|
-| Ad Soyad | [Adınız] |
-| E-posta | [email@example.com] |
-| LinkedIn | [profil linki] |
-| GitHub | [github.com/username] |
+| Ad Soyad | [Mehmet Emir Albayrak] |
+| E-posta | [mehmetemirr24@gmail.com] |
+| LinkedIn | [https://tr.linkedin.com/in/mehmet-emir-albayrak-b47684231] |
+| GitHub | [https://github.com/MehmetEmirAlbayrak] |
 
 ---
 
