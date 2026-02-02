@@ -268,9 +268,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 69251950}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6a8506f3324322044ae72ddbb0fd6ce1, type: 3}
+  m_Script: {fileID: 11500000, guid: a062adeafdbec5943954928e930e89b6, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Key
+  m_EditorClassIdentifier: Assembly-CSharp::Chest
 --- !u!1 &330585543
 GameObject:
   m_ObjectHideFlags: 0
@@ -283,6 +283,7 @@ GameObject:
   - component: {fileID: 330585545}
   - component: {fileID: 330585544}
   - component: {fileID: 330585547}
+  - component: {fileID: 330585548}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -408,6 +409,18 @@ MonoBehaviour:
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
   m_Version: 2
+--- !u!114 &330585548
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 330585543}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b92d212f51d7a2f44ac7eb63bc4525a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
 --- !u!1 &410087039
 GameObject:
   m_ObjectHideFlags: 0
@@ -564,7 +577,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a8a0a354946aa14b8bf78a9ddc99e71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InteractionDetector
-  m_InteractionRange: 2
 --- !u!4 &687013498
 Transform:
   m_ObjectHideFlags: 0
