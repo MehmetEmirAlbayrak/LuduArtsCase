@@ -21,6 +21,7 @@ public class InteractionDetector : MonoBehaviour
             if (m_currentInteractable != null)
             {
                 m_currentInteractable.CancelInteract();
+                m_currentInteractable = null;
             }
         }
     }
@@ -32,11 +33,8 @@ public class InteractionDetector : MonoBehaviour
             IInteractable interactable = hit.collider.GetComponent<IInteractable>();
             if (interactable != null)
             {
-                if (m_currentInteractable == null)
-                {
-                    m_currentInteractable = interactable;
-                }
-                m_currentInteractable.Interact();
+                m_currentInteractable = interactable;
+                interactable.Interact();
             }
         }
     }
