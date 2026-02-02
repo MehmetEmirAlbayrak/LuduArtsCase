@@ -11,4 +11,7 @@ public class Switch : MonoBehaviour, IInteractable
         m_isOn = !m_isOn;
         m_objectToToggle.SetBool("isOn", m_isOn);
     }
+    public void CancelInteract()
+    {
+    }
 }

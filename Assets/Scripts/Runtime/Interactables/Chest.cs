@@ -8,7 +8,15 @@ public class Chest : MonoBehaviour, IInteractable
     private float interactTimer = 0f;
     public void Interact()
     {
-        isInteracting = true;
+        if (!isInteracting)
+        {
+            isInteracting = true;
+            interactTimer = 0f;
+        }
+    }
+    public void CancelInteract()
+    {
+        isInteracting = false;
         interactTimer = 0f;
     }
     private void Update()

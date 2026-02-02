@@ -3,17 +3,25 @@ using Runtime.Core;
 
 public class InteractionDetector : MonoBehaviour
 {
-    public Camera m_mainCamera;
     [SerializeField] private const float k_InteractionRange = 2f;
+    private Camera m_mainCamera;
+    private IInteractable m_currentInteractable;
     private void Awake()
     {
-        m_mainCamera = GetComponentInParent<Camera>();
+        m_mainCamera = Camera.main;
     }
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.E))
         {
             DetectInteractables();
+        }
+        else if (Input.GetKeyUp(KeyCode.E))
+        {
+            if (m_currentInteractable != null)
+            {
+                m_currentInteractable.CancelInteract();
+            }
         }
     }
     private void DetectInteractables()
@@ -24,7 +32,11 @@ public class InteractionDetector : MonoBehaviour
             IInteractable interactable = hit.collider.GetComponent<IInteractable>();
             if (interactable != null)
             {
-                interactable.Interact();
+                if (m_currentInteractable == null)
+                {
+                    m_currentInteractable = interactable;
+                }
+                m_currentInteractable.Interact();
             }
         }
     }
